@@ -7,9 +7,6 @@ type Color = 'primary' | 'danger';
 
 type Variant = 'solid' | 'outline';
 
-const theme: Theme = useContext(ThemeContext);
-console.log('theme: ', theme);
-
 interface ButtonProps {
   color?: Color;
   title: string;
@@ -21,18 +18,28 @@ export const Button = ({
   title,
   variant = 'solid',
 }: ButtonProps) => {
+  const theme: Theme = useContext(ThemeContext);
+  console.log('theme: ', theme);
   return (
     <TouchableOpacity>
       <View
         style={{
-          backgroundColor: theme ? 'red' : backgroundColors[variant][color],
-          borderColor: borderColors[color],
+          backgroundColor: theme.color
+            ? theme.color.base
+            : backgroundColors[variant][color],
+          borderColor: theme.color ? theme.color.base : borderColors[color],
           borderWidth: 2,
           paddingHorizontal: 10,
           paddingVertical: 10,
         }}
       >
-        <Text style={{ color: textColors[variant][color] }}>{title}</Text>
+        <Text
+          style={{
+            color: theme.color ? theme.color.light : textColors[variant][color],
+          }}
+        >
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

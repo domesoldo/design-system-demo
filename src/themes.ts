@@ -1,15 +1,13 @@
-export interface Mode {
-  foreground: string;
-  background: String;
+export interface Color {
+  light: string;
+  base: string;
+  dark: string;
 }
 
 export interface Theme {
-  mode: Mode;
+  color: Color | undefined;
 }
 
-export const lightTheme: Theme = {
-  mode: {
-    foreground: 'white',
-    background: 'black',
-  },
+export const defaultTheme: Theme = {
+  color: undefined,
 };
