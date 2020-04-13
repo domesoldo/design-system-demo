@@ -7,11 +7,15 @@
     "dist",
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domesoldo/design-system-demo"
+  },
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "start": "sdx watch",
+    "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
@@ -35,7 +39,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "components-lib",
+  "name": "@domsoldo/components-lib",
   "author": "Domenico Soldo (AU)",
   "module": "dist/components-lib.esm.js",
   "devDependencies": {

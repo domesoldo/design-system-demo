@@ -1,33 +1,37 @@
 import React from 'react';
-import { Button, ThemeProvider, Theme } from '../src';
+import { Button, ThemeProvider, Theme, Paragraph } from '../src';
 
 export default {
   title: 'Buttons',
 };
 
-export const Primary = () => <Button title="PRESS ME" />;
+export const Primary = () => <Button>PRESS ME</Button>;
 
-export const Danger = () => <Button title="PRESS ME" color="danger" />;
+export const Danger = () => <Button color="danger">PRESS ME</Button>;
 
-export const Outline = () => <Button title="PRESS ME" variant="outline" />;
+export const Outline = () => <Button variant="outline">PRESS ME</Button>;
 
-export const Small = () => <Button title="PRESS ME" size="s" />;
+export const Small = () => <Button size="s">PRESS ME</Button>;
 
-export const Large = () => <Button title="PRESS ME" size="l" />;
+export const Large = () => <Button size="l">PRESS ME</Button>;
 
-export const FullWidth = () => <Button title="PRESS ME" fullWidth={true} />;
+export const FullWidth = () => (
+  <Button fullWidth={true}>
+    <Paragraph align="center">PRESS ME</Paragraph>
+  </Button>
+);
 
 export const WithThemeProvider = () => {
   const custonTheme: Theme = {
     palette: {
-      light: 'white',
+      light: '',
       base: 'pink',
       dark: '',
     },
   };
   return (
     <ThemeProvider theme={custonTheme}>
-      <Button title="PRESS ME" variant="outline" />
+      <Button variant="outline">PRESS ME</Button>
     </ThemeProvider>
   );
 };

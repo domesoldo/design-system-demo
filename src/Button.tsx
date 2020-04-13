@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './themes';
 
@@ -9,19 +9,18 @@ type Variant = 'solid' | 'outline';
 
 interface ButtonProps {
   color?: Color;
-  title: string;
   variant?: Variant;
   size?: 'm' | 's' | 'l';
   fullWidth?: boolean;
 }
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   color = 'primary',
-  title,
   variant = 'solid',
   size = 'm',
   fullWidth = false,
-}: ButtonProps) => {
+  children,
+}) => {
   const theme: Theme = useContext(ThemeContext);
   console.log('theme: ', theme);
   return (
@@ -40,16 +39,7 @@ const Button = ({
           alignSelf: fullWidth ? 'auto' : 'flex-start',
         }}
       >
-        <Text
-          style={{
-            color: theme.palette
-              ? theme.palette.light
-              : textColors[variant][color],
-            textAlign: 'center',
-          }}
-        >
-          {title}
-        </Text>
+        {children}
       </View>
     </TouchableOpacity>
   );
@@ -69,17 +59,6 @@ const backgroundColors = {
 const borderColors = {
   primary: 'blue',
   danger: 'red',
-};
-
-const textColors = {
-  solid: {
-    primary: 'white',
-    danger: 'white',
-  },
-  outline: {
-    primary: 'blue',
-    danger: 'red',
-  },
 };
 
 const customSize = {
