@@ -11,12 +11,16 @@ interface ButtonProps {
   color?: Color;
   title: string;
   variant?: Variant;
+  size?: 'm' | 's' | 'l';
+  fullWidth?: boolean;
 }
 
-export const Button = ({
+const Button = ({
   color = 'primary',
   title,
   variant = 'solid',
+  size = 'm',
+  fullWidth = false,
 }: ButtonProps) => {
   const theme: Theme = useContext(ThemeContext);
   console.log('theme: ', theme);
@@ -24,18 +28,24 @@ export const Button = ({
     <TouchableOpacity>
       <View
         style={{
-          backgroundColor: theme.color
-            ? theme.color.base
+          justifyContent: 'center',
+          backgroundColor: theme.palette
+            ? theme.palette.base
             : backgroundColors[variant][color],
-          borderColor: theme.color ? theme.color.base : borderColors[color],
+          borderColor: theme.palette ? theme.palette.base : borderColors[color],
           borderWidth: 2,
-          paddingHorizontal: 10,
-          paddingVertical: 10,
+          paddingHorizontal: customSize[size].padding,
+          paddingVertical: customSize[size].padding,
+          height: customSize[size].height,
+          alignSelf: fullWidth ? 'auto' : 'flex-start',
         }}
       >
         <Text
           style={{
-            color: theme.color ? theme.color.light : textColors[variant][color],
+            color: theme.palette
+              ? theme.palette.light
+              : textColors[variant][color],
+            textAlign: 'center',
           }}
         >
           {title}
@@ -71,3 +81,20 @@ const textColors = {
     danger: 'red',
   },
 };
+
+const customSize = {
+  s: {
+    height: 40,
+    padding: 12,
+  },
+  m: {
+    height: 60,
+    padding: 16,
+  },
+  l: {
+    height: 80,
+    padding: 20,
+  },
+};
+
+export default Button;

@@ -1,13 +1,13 @@
-export interface Color {
+export interface Palette {
   light: string;
   base: string;
   dark: string;
 }
 
 export interface Theme {
-  color: Color | undefined;
+  palette: Palette | undefined;
 }
 
 export const defaultTheme: Theme = {
-  color: undefined,
+  palette: undefined,
 };

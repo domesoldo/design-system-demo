@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, ThemeProvider, Theme } from '../dist/index';
 
 const darkTheme: Theme = {
-  color: {
+  palette: {
     light: 'white',
     base: 'pink',
     dark: '',
@@ -13,12 +13,26 @@ const darkTheme: Theme = {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Default button</Text>
-      <Button title="Hi guys!" />
+      <Text>Default</Text>
+      <Button title="PRESS ME" />
 
-      <Text>Custom button</Text>
+      <Text>Color and Variant</Text>
+      <Button title="PRESS ME" color="danger" />
+
+      <Button title="PRESS ME" variant="outline" />
+
+      <Text>Small</Text>
+      <Button title="PRESS ME" size="s" />
+
+      <Text>Large</Text>
+      <Button title="PRESS ME" size="m" />
+
+      <Text>Full Width</Text>
+      <Button title="PRESS ME" fullWidth={true} />
+
+      <Text>Custom Theme</Text>
       <ThemeProvider theme={darkTheme}>
-        <Button title="Ciao!" />
+        <Button title="PRESS ME" />
       </ThemeProvider>
     </View>
   );

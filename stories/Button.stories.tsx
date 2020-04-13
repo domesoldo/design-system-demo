@@ -5,8 +5,8 @@ export default {
   title: 'Buttons',
 };
 
-export const Primary = () => <Button title="Hi guys!" />;
+export const Primary = () => <Button title="PRESS ME" />;
 
-export const Secondary = () => (
-  <Button variant="outline" color="danger" title="Hi guys!" />
-);
+export const Danger = () => <Button title="PRESS ME" color="danger" />;
+
+export const Outline = () => <Button title="PRESS ME" variant="outline" />;
