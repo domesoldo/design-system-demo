@@ -9,7 +9,11 @@ export const Primary = () => <Button>PRESS ME</Button>;
 
 export const Danger = () => <Button color="danger">PRESS ME</Button>;
 
-export const Outline = () => <Button variant="outline">PRESS ME</Button>;
+export const Outline = () => (
+  <Button variant="outline">
+    <Paragraph align="center">PRESS ME</Paragraph>
+  </Button>
+);
 
 export const Small = () => <Button size="s">PRESS ME</Button>;
 

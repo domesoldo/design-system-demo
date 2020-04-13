@@ -5,9 +5,11 @@ import { Theme } from './themes';
 
 export type FontWeight = 'normal' | 'bold';
 
+type Color = 'dark' | 'light';
+
 interface ParagraphProps {
   align?: 'left' | 'center' | 'right';
-  color?: string;
+  color?: Color;
   size?: 'm' | 's' | 'l';
   numberOfLines?: number;
   weight?: FontWeight;
@@ -16,7 +18,7 @@ interface ParagraphProps {
 const Paragraph: React.FC<ParagraphProps> = ({
   align = 'left',
   children,
-  color = 'black',
+  color = 'dark',
   size = 'm',
   numberOfLines,
   weight = 'normal',
@@ -31,13 +33,18 @@ const Paragraph: React.FC<ParagraphProps> = ({
         fontWeight: weight,
         fontSize: customSize[size].fontSize,
         lineHeight: customSize[size].lineHeight,
-        color: theme.palette ? theme.palette.base : color,
+        color: theme.palette ? theme.palette.base : textColor[color],
         textAlign: align,
       }}
     >
       {children}
     </Text>
   );
+};
+
+const textColor = {
+  dark: 'black',
+  light: 'white',
 };
 
 const customSize = {

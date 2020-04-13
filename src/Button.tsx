@@ -39,7 +39,14 @@ const Button: React.FC<ButtonProps> = ({
           alignSelf: fullWidth ? 'auto' : 'flex-start',
         }}
       >
-        {children}
+        <View
+          style={{
+            justifyContent: 'center',
+            color: theme.palette ? theme.palette.light : 'white',
+          }}
+        >
+          {children}
+        </View>
       </View>
     </TouchableOpacity>
   );
