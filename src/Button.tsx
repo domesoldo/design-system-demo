@@ -41,8 +41,7 @@ const Button: React.FC<ButtonProps> = ({
       >
         <View
           style={{
-            justifyContent: 'center',
-            color: theme.palette ? theme.palette.light : 'white',
+            alignItems: 'center',
           }}
         >
           {children}
